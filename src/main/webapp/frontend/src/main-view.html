@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/vaadin-ordered-layout/src/vaadin-vertical-layout.html">
+<link rel="import" href="../bower_components/vaadin-text-field/src/vaadin-text-area.html">
+<link rel="import" href="../bower_components/vaadin-radio-button/src/vaadin-radio-button.html">
+<link rel="import" href="../bower_components/vaadin-ordered-layout/src/vaadin-horizontal-layout.html">
+<link rel="import" href="../bower_components/vaadin-grid/src/vaadin-grid.html">
+<link rel="import" href="../bower_components/vaadin-combo-box/src/vaadin-combo-box.html">
+
+<dom-module id="main-view">
+    <template>
+<style>
+            #filter-container {
+                width:100%;
+                background-color:#eee;
+            }
+
+            #filter-container > * {
+                margin: var(--lumo-space-s);
+            }
+
+            #filter-container vaadin-text-field {
+                width: 250px;
+            }
+
+            #owner-cb {
+                float:right;
+            }
+        </style>
+<vaadin-vertical-layout style="width: 100%; height: 100%;">
+ <div id="filter-container">
+  <vaadin-text-field id="animal-searcher" label="Term" placeholder="search"></vaadin-text-field>
+  <vaadin-combo-box items="[[items]]" id="specie-cb" label="Specie"></vaadin-combo-box>
+  <vaadin-combo-box items="[[items]]" id="owner-cb" label="Owner"></vaadin-combo-box>
+ </div>
+ <vaadin-grid items="[[items]]" id="animals-grid"></vaadin-grid>
+</vaadin-vertical-layout>
+</template>
+
+    <script>
+        class MainView extends Polymer.Element {
+            static get is() {
+                return 'main-view';
+            }
+
+            static get properties() {
+                return {
+                    // Declare your properties here.
+                };
+            }
+        }
+        customElements.define(MainView.is, MainView);
+    </script>
+</dom-module

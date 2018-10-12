@@ -1,0 +1,11 @@
+bower_components/
+build/
+node_modules/
+/target/
+/.idea/
+.DS_Store
+.project
+*.mv.db
+*.trace.db
+.classpath
+.settings

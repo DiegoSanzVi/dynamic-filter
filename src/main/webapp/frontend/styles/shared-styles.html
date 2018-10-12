@@ -1,0 +1,282 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/vaadin-lumo-styles/color.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/sizing.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/spacing.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/style.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/typography.html">
+
+<!-- shared styles for all views -->
+<dom-module id="shared-styles">
+  <template>
+    <style include="lumo-color lumo-typography">
+      :host {
+        --white-color: #fff;
+        --ghost-color-lighter: #FAFBFD;
+        --ghost-color: #F4F6FA;
+        --ghost-color-darker: #EDF0F7;
+        --shade-color: #323B40;
+        --gray-color-lighter: #DFE5E8;
+        --gray-color: #A6B0B6;
+        --gray-color-darker: #5D6E78;
+        --lumo-font-family: 'Rubik', sans-serif;
+        --lumo-body-text-color: #5D6E78;
+        --lumo-font-size-m: 1rem;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      .inline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .inline-list li {
+        display: inline-block;
+      }
+
+      .card-shadow {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        height: 93%;
+        width: 95%;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: 200;
+      }
+
+      .card-shadow .spinner {
+        top: 50%;
+        left: 50%;
+        -webkit-animation: va-spin 2s infinite linear;
+        animation: va-spin 2s infinite linear;
+      }
+
+      .w-100 {
+        width: 100%;
+      }
+
+      @-webkit-keyframes va-spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes va-spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+      .Circle-background {
+        stroke: var(--s-circle-progress-bg-stroke-color, --paper-grey-100);
+        stroke: #DFE5E8;
+        stroke-width: 2px;
+      }
+
+      .Circle-foreground {
+        transition: var(--s-circle-progress-transition, stroke-dashoffset 150ms);
+        stroke: var(--s-circle-progress-stroke-color, --accent-color);
+        stroke: #FFA135;
+        stroke-width: 4px;
+      }
+
+      .fb {
+        position: absolute;
+      }
+
+      .overlay-cage {
+        position: absolute;
+        right: 0;
+        top: 30px;
+        background-color: var(--ghost-color);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 6;
+        padding: 20px;
+        transition: all .25s ease;
+        margin: 0 !important;
+        box-sizing: border-box;
+        border-radius: 4px 0 4px 4px;
+      }
+
+      .overlay-cage vaadin-combo-box {
+        width: 100%;
+      }
+
+      .overlay-cage vaadin-date-picker {
+        width: 100%;
+      }
+
+      .overlay-cage .datepicker-cage {
+        flex-grow: 1;
+        width: 40%;
+      }
+
+      .overlay-cage .strip {
+        flex-grow: 1;
+        text-align: center;
+      }
+
+      .active .overlay-cage {
+        visibility: visible;
+        top: 50px;
+        opacity: 1;
+      }
+
+      .toggle-btn vaadin-radio-button span {
+        background-color: var(--ghost-color);
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .name-box {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .name-box .name-text {
+        margin-left: 5px;
+        font-size: 14px;
+        color: var(--gray-color-darker);
+        font-weight: 500;
+      }
+
+      .name-box .img-box {
+        flex-shrink: 0;
+      }
+
+      paper-expansion-panel {
+        display: block;
+      }
+
+
+      .hour-report-grid span.hour-warning {
+        color: var(--lumo-error-color);
+      }
+    </style>
+  </template>
+</dom-module>
+
+<dom-module id="vaadin-grid-theme" theme-for="vaadin-grid">
+  <template>
+    <style>
+      :host(#project-grid) table thead tr[part=row] th {
+        min-height: 36px;
+      }
+
+      :host(#project-grid) table thead tr[part=row] th,
+      :host(#project-grid) table tbody tr[part=row] td {
+        background-color: #F4F6FA;
+      }
+
+      :host(#project-grid[theme~="compact"]) [part~="cell"] ::slotted(vaadin-grid-cell-content) {
+        padding: 0 0 2px 0;
+      }
+      
+      :host(#invoiceGrid) [part="cell body-cell"]:nth-of-type(4) ::slotted(vaadin-grid-cell-content) {
+	  	text-align: right;
+	  	padding-right: 30px;
+	  }
+	  
+	  :host(#invoiceGrid) [part="cell header-cell"]:nth-of-type(4) ::slotted(vaadin-grid-cell-content) {
+	  	text-align: right;
+	  	padding-right: 30px;
+	  }
+	  
+      :host(#invoiceGrid) table tbody tr[part=row] td {
+        background-color: #F4F6FA;
+        color: #76828A;
+        font-family: var(--lumo-font-family);
+        font-size: 14px;
+      }
+    </style>
+  </template>
+</dom-module>
+
+<dom-module id="vaadin-text-field-theme" theme-for="vaadin-text-field">
+  <template>
+    <style>
+      :host(vaadin-text-field) [part="input-field"] {
+		background-color: #FFFFFF;
+		border: solid 1px #E0E5E8;
+		box-sizing: border-box;
+	  }
+
+
+      :host(.text-right-align) [part="value"]{
+        text-align: right;
+        --_lumo-text-field-overflow-mask-image: none;
+      }
+
+      :host(.project-filter-multi-box) {
+        opacity: 0.5;
+      }
+    </style>
+  </template>
+</dom-module>
+
+<dom-module id="vaadin-combo-box-theme" theme-for="vaadin-combo-box">
+  <template>
+    <style>
+      :host(.project-filter-multi-box) [part="text-field"]  [part="label"] {
+        color: indianred;
+        /*opacity: 0.5;*/
+      }
+      :host(.project-filter-multi-box) [part="text-field"] {
+        /*color: indianred;*/
+        /*opacity: 0.5;*/
+      }
+      /*:host(vaadin-text-field) [part="input-field"] {*/
+        /*background-color: #FFFFFF;*/
+        /*border: solid 1px #E0E5E8;*/
+        /*box-sizing: border-box;*/
+      /*}*/
+    </style>
+  </template>
+</dom-module>
+
+<dom-module id="vaadin-dialog-overlay-theme" theme-for="vaadin-dialog-overlay">
+  <template>
+    <style>
+      <!--#content {-->
+      	<!--padding: 0;-->
+      <!--}-->
+    </style>
+  </template>
+</dom-module>
+
+<custom-style>
+  <!-- This is where your App's styling should go. You can use .css files too. -->
+  <style>
+    body {
+      min-width: 815px;
+      --lumo-border-radius: 2px;
+      pointer-events: all !important;
+    }
+  </style>
+</custom-style>
