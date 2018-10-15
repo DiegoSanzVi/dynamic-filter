@@ -16,7 +16,7 @@ public class AnimalsGrid extends Grid<Animal> {
     @Autowired
     private AnimalService animalService;
     /**
-     * Data provider that fetches the users from the DB dynamically accordingly to a user filter.
+     * Data provider that fetches animals from the DB dynamically accordingly to a animal filter.
      */
     private ConfigurableFilterDataProvider<Animal, Void, AnimalFilter> dataProvider;
 
@@ -41,7 +41,7 @@ public class AnimalsGrid extends Grid<Animal> {
         setDataProvider(dataProvider);
     }
 
-    public void setFilter(AnimalFilter userFilter) {
-        dataProvider.setFilter(userFilter);
+    public void setFilter(AnimalFilter animalFilter) {
+        dataProvider.setFilter(animalFilter);
     }
 }
