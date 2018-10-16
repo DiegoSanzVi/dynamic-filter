@@ -8,7 +8,6 @@ import petshop.ui.filters.AnimalFilter;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.provider.ConfigurableFilterDataProvider;
 import com.vaadin.flow.data.provider.DataProvider;
-//import com.vaadin.spring.PrototypeScope;
 
 public class AnimalsGrid extends Grid<Animal> {
 
